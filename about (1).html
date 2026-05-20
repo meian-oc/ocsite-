@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>学園案内 — 都立白暁高校</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #1c1f3d;
+  --navy-deep: #0f1128;
+  --navy-soft: #2a2d52;
+  --cream: #f6f2ea;
+  --paper: #faf7f1;
+  --lavender-light: #ede8f3;
+  --lavender: #d6cde6;
+  --lavender-deep: #9d8fc4;
+  --text: #2a2d3e;
+  --text-muted: #6b6e80;
+  --line: rgba(28, 31, 61, 0.1);
+  --accent: #8a7fb8;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body { background: #e8e3dc; }
+
+body {
+  font-family: 'Shippori Mincho B1', serif;
+  color: var(--text);
+  min-height: 100dvh;
+}
+
+/* ヘッダー */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--cream);
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  height: 52px;
+}
+
+.header-back {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: var(--text-muted);
+  font-size: 12px;
+  letter-spacing: 0.05em;
+}
+.header-back svg {
+  width: 16px; height: 16px;
+  stroke: currentColor; fill: none;
+  stroke-width: 1.5; stroke-linecap: round;
+}
+
+.header-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  color: var(--navy);
+  font-weight: 400;
+}
+
+.menu-btn {
+  width: 36px; height: 36px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 5px; cursor: pointer;
+  background: none; border: none; padding: 4px;
+}
+.menu-btn span {
+  display: block;
+  width: 20px; height: 1px;
+  background: var(--navy);
+  transition: all 0.3s;
+}
+
+/* メインコンテンツ */
+.page-wrap {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 0 0 80px;
+}
+
+/* ページヒーロー */
+.page-hero {
+  background: var(--navy-deep);
+  padding: 52px 24px 40px;
+  position: relative;
+  overflow: hidden;
+}
+.page-hero::before {
+  content: 'ABOUT';
+  position: absolute;
+  right: -8px; top: 20px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 80px;
+  color: rgba(255,255,255,0.04);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+}
+.hero-en {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 11px;
+  letter-spacing: 0.35em;
+  color: var(--lavender-deep);
+  margin-bottom: 12px;
+  display: block;
+}
+.hero-title {
+  font-size: 28px;
+  color: #f0ecf8;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* セクション共通 */
+.section {
+  background: var(--paper);
+  margin: 2px 0;
+  padding: 36px 24px;
+  position: relative;
+}
+.section + .section {
+  border-top: 1px solid var(--line);
+}
+
+.section-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 10px;
+  letter-spacing: 0.4em;
+  color: var(--lavender-deep);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--lavender);
+}
+
+.section-body {
+  font-size: 14px;
+  line-height: 2.2;
+  color: var(--text);
+  letter-spacing: 0.05em;
+}
+
+.section-body p + p {
+  margin-top: 12px;
+}
+
+/* コースリスト */
+.course-list {
+  list-style: none;
+  margin: 16px 0;
+}
+.course-list li {
+  font-size: 14px;
+  line-height: 2;
+  color: var(--text);
+  letter-spacing: 0.05em;
+  padding-left: 1em;
+  position: relative;
+}
+.course-list li::before {
+  content: '・';
+  position: absolute;
+  left: 0;
+  color: var(--lavender-deep);
+}
+
+.course-note {
+  font-size: 12px;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  line-height: 2;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+/* ロケーション */
+.location-main {
+  font-size: 18px;
+  letter-spacing: 0.1em;
+  color: var(--navy);
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+.location-access {
+  font-size: 12px;
+  color: var(--lavender-deep);
+  letter-spacing: 0.12em;
+  margin-bottom: 16px;
+}
+.location-note {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 2;
+  letter-spacing: 0.05em;
+}
+
+/* マップ */
+.map-section {
+  background: #f0ede8;
+  padding: 0;
+  overflow: hidden;
+}
+.map-section img {
+  width: 100%;
+  display: block;
+}
+.map-caption {
+  padding: 12px 24px;
+  font-size: 10px;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  text-align: right;
+  background: var(--paper);
+  border-top: 1px solid var(--line);
+}
+
+/* フッター */
+footer {
+  background: var(--navy-deep);
+  color: rgba(255,255,255,0.25);
+  text-align: center;
+  padding: 20px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+}
+
+/* ハンバーガーメニュー（index.htmlと共通） */
+.nav-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(15, 17, 40, 0);
+  pointer-events: none;
+  z-index: 199;
+  transition: background 0.4s;
+}
+
+.nav-overlay.open {
+  background: rgba(15, 17, 40, 0.5);
+  pointer-events: auto;
+}
+
+.nav-menu {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) translateX(100%);
+  width: 100%;
+  max-width: 480px;
+  height: 100vh;
+  height: 100dvh;
+  background: var(--navy-deep);
+  z-index: 200;
+  visibility: hidden;
+  opacity: 0;
+  transition: 
+    transform 0.55s cubic-bezier(0.7, 0, 0.25, 1),
+    opacity 0.3s,
+    visibility 0s linear 0.55s;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: -8px 0 40px rgba(0, 0, 0, 0.3);
+}
+
+.nav-menu::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.nav-menu::after {
+  content: '';
+  position: absolute;
+  top: 30%;
+  right: -50px;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(157, 143, 196, 0.2) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.nav-menu.open {
+  transform: translateX(-50%) translateX(0);
+  visibility: visible;
+  opacity: 1;
+  transition: 
+    transform 0.55s cubic-bezier(0.7, 0, 0.25, 1),
+    opacity 0.3s,
+    visibility 0s linear 0s;
+}
+
+.nav-decoration {
+  position: relative;
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2;
+}
+
+.nav-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 12px;
+  letter-spacing: 0.5em;
+  color: rgba(246, 242, 234, 0.5);
+  font-weight: 500;
+}
+
+.nav-close {
+  width: 36px; height: 36px;
+  background: transparent;
+  border: 1px solid rgba(246, 242, 234, 0.2);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  color: var(--cream);
+  transition: 0.3s;
+}
+
+.nav-close:hover {
+  background: rgba(246, 242, 234, 0.1);
+  transform: rotate(90deg);
+}
+
+.nav-close svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.5; }
+
+.nav-items {
+  flex: 1;
+  display: flex; flex-direction: column;
+  justify-content: center;
+  padding: 0 32px;
+  gap: 4px;
+  position: relative;
+  z-index: 2;
+}
+
+.nav-item {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  padding: 18px 0 22px;
+  border-bottom: 1px solid rgba(246, 242, 234, 0.08);
+  text-decoration: none;
+  color: var(--cream);
+  position: relative;
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity 0.4s, transform 0.4s, padding 0.3s;
+}
+
+.nav-item:hover { padding-left: 8px; }
+
+.nav-item::after {
+  content: '→';
+  position: absolute;
+  right: 0; top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  color: rgba(246, 242, 234, 0.4);
+  transition: transform 0.3s, color 0.3s;
+}
+
+.nav-item:hover::after {
+  color: var(--cream);
+  transform: translateY(-50%) translateX(4px);
+}
+
+.nav-menu.open .nav-item { opacity: 1; transform: translateX(0); }
+.nav-menu.open .nav-item:nth-child(1) { transition-delay: 0.18s; }
+.nav-menu.open .nav-item:nth-child(2) { transition-delay: 0.24s; }
+.nav-menu.open .nav-item:nth-child(3) { transition-delay: 0.30s; }
+.nav-menu.open .nav-item:nth-child(4) { transition-delay: 0.36s; }
+.nav-menu.open .nav-item:nth-child(5) { transition-delay: 0.42s; }
+.nav-menu.open .nav-item:nth-child(6) { transition-delay: 0.48s; }
+
+.nav-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px;
+  color: rgba(246, 242, 234, 0.5);
+  letter-spacing: 0.15em;
+  font-weight: 400;
+  min-width: 28px;
+}
+
+.nav-jp {
+  font-family: 'Shippori Mincho B1', serif;
+  font-size: 22px;
+  letter-spacing: 0.18em;
+  font-weight: 500;
+  flex: 1;
+}
+
+.nav-en {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 10px;
+  color: rgba(246, 242, 234, 0.4);
+  letter-spacing: 0.3em;
+  position: absolute;
+  left: 46px;
+  bottom: 6px;
+}
+
+.nav-foot {
+  padding: 24px 32px 32px;
+  border-top: 1px solid rgba(246, 242, 234, 0.1);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  color: rgba(246, 242, 234, 0.4);
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+  <!-- ヘッダー -->
+  <header class="site-header">
+    <a class="header-back" href="index.html">
+      <svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      トップ
+    </a>
+    <div class="header-title">HAKUGYO HIGH SCHOOL</div>
+    <button class="menu-btn" id="menuBtn" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- ヒーロー -->
+  <div class="page-hero">
+    <span class="hero-en">ABOUT</span>
+    <h1 class="hero-title">学園案内</h1>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="section">
+    <div class="section-label">ABOUT</div>
+    <div class="section-body">
+      <p>白暁高校は、<br>全日制・通信制を併設した<br>単位制高校です。</p>
+      <p>それぞれの事情や生活に合わせ、<br>通学頻度を選択できます。</p>
+    </div>
+  </section>
+
+  <!-- COURSE -->
+  <section class="section">
+    <div class="section-label">COURSE</div>
+    <ul class="course-list">
+      <li>全日制</li>
+      <li>週3日制</li>
+      <li>通信制</li>
+    </ul>
+    <div class="course-note">月4〜8回のスクーリング制を採用。</div>
+  </section>
+
+  <!-- LOCATION -->
+  <section class="section">
+    <div class="section-label">LOCATION</div>
+    <div class="location-main">白群市 雨代区</div>
+    <div class="location-access">霞橋駅 徒歩8分</div>
+    <div class="location-note">旧市街と沿岸区の境界に位置しています。</div>
+  </section>
+
+  <!-- MAP -->
+  <div class="map-section">
+    <img src="map_access.png" alt="白暁高校 周辺マップ">
+  </div>
+
+  <footer>© Hakugyo High School</footer>
+</div>
+
+<!-- ハンバーガーメニュー -->
+<div class="nav-overlay" id="navOverlay"></div>
+<aside class="nav-menu" id="navMenu" aria-hidden="true">
+  <div class="nav-decoration">
+    <div class="nav-label">MENU</div>
+    <button class="nav-close" id="menuClose" aria-label="閉じる">
+      <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6l-12 12" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <nav class="nav-items">
+    <a href="index.html" class="nav-item">
+      <span class="nav-num">01</span>
+      <span class="nav-jp">トップ</span>
+      <span class="nav-en">Top</span>
+    </a>
+    <a href="about.html" class="nav-item">
+      <span class="nav-num">02</span>
+      <span class="nav-jp">学園案内</span>
+      <span class="nav-en">About</span>
+    </a>
+    <a href="https://chipped-wish-695.notion.site/08a382029dca4b49aedfe04b8bd55903?v=fca287099d4949a5babecf801b5ebc04&source=copy_link" target="_blank" class="nav-item">
+      <span class="nav-num">03</span>
+      <span class="nav-jp">図書室</span>
+      <span class="nav-en">novel</span>
+    </a>
+    <a href="https://privatter.me/user/hakugyo_storage" target="_blank" class="nav-item">
+      <span class="nav-num">04</span>
+      <span class="nav-jp">保管庫</span>
+      <span class="nav-en">illust・comics</span>
+    </a>
+    <a href="https://x.com/hakugyo_other?s=21" target="_blank" class="nav-item">
+      <span class="nav-num">05</span>
+      <span class="nav-jp">放課後</span>
+      <span class="nav-en">other</span>
+    </a>
+    <a href="restricted.html" class="nav-item">
+      <span class="nav-num">06</span>
+      <span class="nav-jp">閲覧禁止</span>
+      <span class="nav-en">Restricted</span>
+    </a>
+  </nav>
+  <div class="nav-foot">© Hakugyo High School</div>
+</aside>
+
+<script>
+  // ハンバーガーメニュー
+  const menu = document.getElementById('navMenu');
+  const overlay = document.getElementById('navOverlay');
+  document.getElementById('menuBtn').addEventListener('click', () => {
+    menu.classList.add('open');
+    overlay.classList.add('open');
+    menu.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  });
+  function closeMenu() {
+    menu.classList.remove('open');
+    overlay.classList.remove('open');
+    menu.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('menuClose').addEventListener('click', closeMenu);
+  overlay.addEventListener('click', closeMenu);
+</script>
+</body>
+</html>
